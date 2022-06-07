@@ -1,4 +1,4 @@
-import bs4 as bs
+import bs4
 import urllib.request
 import random
 import os
@@ -21,7 +21,7 @@ def get_nav_bar(websites):
 	sections_list = []
 	for website in websites:
 		source = urllib.request.urlopen(website).read()
-		soup = bs.BeautifulSoup(source,'lxml')
+		soup = bs4.BeautifulSoup(source,'lxml')
 		mydivs = soup.find_all("div", {"class": "sect3"})
 		print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		print ("The sect3 content is the following:")
@@ -50,7 +50,7 @@ def get_nav_bar(websites):
 		no_link = "https://redhat-documentation.github.io/supplementary-style-guide/images/no.png"
 		
 		new_snippet = re.sub(pattern,no_link,new_snippet)
-		print(new_snippet)
+		#print(new_snippet)
 		html = new_snippet
 		path = os.path.abspath('.temp.html')
 		url = 'file://' + path
@@ -58,6 +58,7 @@ def get_nav_bar(websites):
 		with open(path, 'w') as f:
 		    f.write(html)
 		webbrowser.open(url)
+		print(url)
 
 get_nav_bar(websites)
 
