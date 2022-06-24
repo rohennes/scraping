@@ -52,12 +52,13 @@ def get_nav_bar(websites):
 		new_snippet = re.sub(pattern,no_link,new_snippet)
 		#print(new_snippet)
 		html = new_snippet
-		path = os.path.abspath('.temp.html')
-		url = 'file://' + path
+		path = os.path.abspath('temp.html')
+		print(path)
+		url = 'file:/' + path
 
-		with open(path, 'w') as f:
-		    f.write(html)
-		webbrowser.open(url)
+		#with open(path, 'w') as f:
+		#    f.write(html)
+		#webbrowser.open(path)
 		print(url)
 
 get_nav_bar(websites)
